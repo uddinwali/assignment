@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment
+{
+    class Program
+    {
+        static int cons = 4;
+        void checking(int[,] g)
+        {
+            
+            int[,] com = new int[cons, cons];
+            int i, j, k;
+
+           
+            for (i = 0; i < cons; i++)
+                for (j = 0; j < cons; j++)
+                    com[i, j] = g[i, j];
+
+          
+            for (k = 0; k < cons; k++)
+            {
+               
+                for (i = 0; i < cons; i++)
+                {
+                    
+                    for (j = 0; j < cons; j++)
+                    {
+                        
+                        com[i, j] = (com[i, j] != 0) ||
+                                     ((com[i, k] != 0) &&
+                                      (com[k, j] != 0)) ? 1 : 0;
+                    }
+                }
+            }
+
+            
+            print(com);
+        }
+
+        
+        void print(int[,] com)
+        {
+            Console.WriteLine("Output : ");
+            for (int i = 0; i < cons; i++)
+            {
+                for (int j = 0; j < cons; j++)
+                    Console.Write(com[i, j] + " ");
+                Console.WriteLine();
+            }
+        }  
+
+        static void Main(string[] args)
+        {
+            
+            int[,] arr = new int[4, 4];
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.WriteLine("Enter Number : ");
+                    arr[i,j] = int.Parse(Console.ReadLine());
+
+                  
+                }
+            }
+
+            Program g = new Program();
+            g.checking(arr);  
+        }
+    }
+}
